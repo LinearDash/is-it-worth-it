@@ -3,6 +3,8 @@ const passport = require('../auth/passport')
 const { generateToken } = require('../auth/jwt')
 
 const { getPopularMovies,getMovieById,getPopularShows,getShowById,searchMoviesAndShows } = require('../apis/tmdb')
+const authMiddleware = require('../middleware/auth')
+const { addToLibrary } = require('../storage/users')
 
 
 const router = express.Router()
@@ -44,5 +46,14 @@ router.get('/search', async(req,res) => {
     const results = await searchMoviesAndShows(req.query.q)
     res.json(results)
 })
+
+router.post('/library/add',authMiddleware, async(req,res)=>{
+    const userId = req.user.id;
+    const item = req.body
+
+    const upadtedUser = addToLibrary(userId,item)
+    res.json(upadtedUser)
+})
+
 
 module.exports = router

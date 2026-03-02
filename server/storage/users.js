@@ -38,7 +38,8 @@ const createUser = (profile)=>{
   name:profile.displayName,
   email:profile.emails[0].value,
   photo:profile.photos[0].value,
-  createdAt :new Date().toISOString()
+  createdAt :new Date().toISOString(),
+  library:[]
  }
 
 users.push(newUser);
@@ -47,4 +48,22 @@ users.push(newUser);
  return newUser;
 }
 
-module.exports ={findUserByGoogleId,createUser}
+const addToLibrary = (userId,item)=>{
+  let users = getUsers()
+  
+  const userIndex = users.findIndex(user => user.id ==userId)
+
+  if(userIndex === -1){
+    return({message:`User not found`})
+  }
+  if(!item){
+    return({message: `Item not provided`})
+  
+  }
+  
+  users[userIndex].library.push(item)
+  saveUsers(users)
+  return users[userIndex]
+}
+
+module.exports ={findUserByGoogleId,createUser,addToLibrary}
