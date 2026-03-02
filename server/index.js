@@ -1,22 +1,21 @@
 const dontenv = require('dotenv')
 dontenv.config()
 
-const http = require('http')
+const express = require('express')
+const cors = require('cors')
 
+const app = express()
 const PORT = process.env.PORT
+
+app.use(cors())
+app.use(express.json())
+
+
 
 const router =require('./apis/routes')
 
+app.use('/',router)
 
-
-const server = http.createServer((req,res)=>{
-
-  res.writeHead(200,{'Content-Type':'text/plain'})
-  router(req,res)
-  
-  
-})
-
-server.listen(PORT,()=>{
-  console.log(`Server running on Port:${PORT}`)
+app.listen(PORT,()=>{
+  console.log(`Server running http://localhost:${PORT}`)
 })
