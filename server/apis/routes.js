@@ -2,6 +2,9 @@ const express = require('express')
 const passport = require('../auth/passport')
 const { generateToken } = require('../auth/jwt')
 
+const { getPopularMovies,getMovieById,getPopularShows,getShowById,searchMoviesAndShows } = require('../apis/tmdb')
+
+
 const router = express.Router()
 
 router.get('/auth/google',passport.authenticate('google',{
@@ -17,5 +20,29 @@ router.get('/auth/google/callback',
         res.redirect(`${process.env.FRONTEND_URL}/auth/callback?token=${token}`);
     }
 )
+router.get('/movies/popular',async(req,res)=>{
+    const movies = await getPopularMovies()
+    res.json(movies)
+})
+
+router.get('/movies/:id', async(req,res) => {
+    const movie = await getMovieById(req.params.id)
+    res.json(movie)
+})
+
+router.get('/shows/popular', async(req,res) => {
+    const shows = await getPopularShows()
+    res.json(shows)
+})
+
+router.get('/shows/:id', async(req,res) => {
+    const show = await getShowById(req.params.id)
+    res.json(show)
+})
+
+router.get('/search', async(req,res) => {
+    const results = await searchMoviesAndShows(req.query.q)
+    res.json(results)
+})
 
 module.exports = router
