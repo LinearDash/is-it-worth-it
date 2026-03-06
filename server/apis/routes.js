@@ -4,7 +4,7 @@ const { generateToken } = require('../auth/jwt')
 
 const { getPopularMovies,getMovieById,getPopularShows,getShowById,searchMoviesAndShows } = require('../apis/tmdb')
 const authMiddleware = require('../middleware/auth')
-const { addToLibrary } = require('../storage/users')
+const { addToLibrary,removeFromLibrary } = require('../storage/users')
 
 
 const router = express.Router()
@@ -48,11 +48,30 @@ router.get('/search', async(req,res) => {
 })
 
 router.post('/library/add',authMiddleware, async(req,res)=>{
-    const userId = req.user.id;
-    const item = req.body
+    try {
+     const userId = req.user.id;
+     const item = req.body
 
-    const upadtedUser = addToLibrary(userId,item)
-    res.json(upadtedUser)
+     const upadtedUser = addToLibrary(userId,item)
+    res.json(upadtedUser) 
+    } catch (error) {
+     res.status(500).json({ message: 'Something went wrong' })
+    }
+   
+})
+
+router.delete('/library/delete',authMiddleware, async(req,res)=>{
+    try {
+        const userId = req.user.id;
+        const item = req.body;
+
+        const upadtedUser = removeFromLibrary(userId,item)
+        res.json(upadtedUser) 
+
+    } catch (error) {
+        res.status(500).json({ message: 'Something went wrong' })
+  
+    }
 })
 
 

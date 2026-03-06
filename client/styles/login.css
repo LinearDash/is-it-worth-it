@@ -1,0 +1,176 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: #0f0f13;
+  color: #f0ede6;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Layout */
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100vh;
+}
+
+/* Left Panel */
+.left-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 48px;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  background: #0a0a0e;
+}
+
+.logo-text {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: #c9a84c;
+}
+
+.hero {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #c9a84c;
+  margin-bottom: 20px;
+}
+
+.headline {
+  font-size: 52px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: #f0ede6;
+  margin-bottom: 12px;
+}
+
+.tagline {
+  font-size: 52px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: #4a4760;
+}
+
+/* Right Panel */
+.right-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+  background: #0f0f13;
+}
+
+.auth-box {
+  width: 100%;
+  max-width: 360px;
+}
+
+.auth-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #f0ede6;
+  margin-bottom: 8px;
+}
+
+.auth-subtitle {
+  font-size: 14px;
+  color: #6b6880;
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+
+/* Google Button */
+.google-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  padding: 13px 20px;
+  background: #ffffff;
+  color: #1a1a2e;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.google-btn:hover {
+  opacity: 0.9;
+}
+
+.google-icon {
+  width: 18px;
+  height: 18px;
+}
+
+/* Features */
+.features {
+  margin-top: 36px;
+}
+
+.features-title {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #4a4760;
+  margin-bottom: 16px;
+}
+
+.features-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.feature-item {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding-left: 14px;
+  border-left: 2px solid rgba(201, 168, 76, 0.3);
+}
+
+.feature-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #f0ede6;
+}
+
+.feature-desc {
+  font-size: 12px;
+  color: #6b6880;
+  line-height: 1.5;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+
+  .left-panel {
+    display: none;
+  }
+
+  .right-panel {
+    padding: 32px 24px;
+  }
+}

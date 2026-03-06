@@ -66,4 +66,24 @@ const addToLibrary = (userId,item)=>{
   return users[userIndex]
 }
 
-module.exports ={findUserByGoogleId,createUser,addToLibrary}
+const removeFromLibrary = (userId,item)=>{
+  let users = getUsers()
+  
+  const userIndex = users.findIndex(user => user.id ==userId)
+
+  if(userIndex === -1){
+    return({message:`User not found`})
+  }
+  if(!item){
+    return({message: `Item not provided`})
+  
+  }
+  
+  users[userIndex].library = users[userIndex].library.filter(
+    libraryItem => libraryItem.id !== item.id
+  )
+  saveUsers(users)
+  return users[userIndex]
+}
+
+module.exports ={findUserByGoogleId,createUser,addToLibrary,removeFromLibrary}
