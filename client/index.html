@@ -2,10 +2,47 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home — Is It Worth It?</title>
+    <link rel="stylesheet" href="./styles/home.css" />
   </head>
   <body>
-    <h1>Welcome! You are logged in.</h1>
+    <nav class="navbar">
+      <span class="nav-logo">Is It Worth It?</span>
+      <input
+        type="text"
+        id="search-input"
+        class="search-bar"
+        placeholder="Search movies, shows..."
+      />
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/pages/profile.html">My Library</a></li>
+      </ul>
+    </nav>
+
+    <main class="main-content">
+      <section class="hero">
+        <h1 class="hero-title">What are you watching tonight?</h1>
+        <p class="hero-subtitle">Get an honest AI verdict before you commit.</p>
+      </section>
+
+      <section class="row-section">
+        <h2 class="row-title">Popular Movies</h2>
+        <div id="movies-row" class="cards-row"></div>
+      </section>
+
+      <section class="row-section">
+        <h2 class="row-title">Popular TV Shows</h2>
+        <div id="shows-row" class="cards-row"></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Is It Worth It? — AI powered verdicts</p>
+    </footer>
+
+    <script src="./scripts/index.js"></script>
+    <script src="./scripts/home.js"></script>
   </body>
-  <script src="./scripts/index.js"></script>
 </html>
