@@ -19,7 +19,7 @@ router.get('/auth/google/callback',
     (req,res) => {
         const user = req.user
         const token = generateToken(user)
-        res.redirect(`${process.env.FRONTEND_URL}/auth/callback?token=${token}`);
+        res.redirect(`http://localhost:3000/pages/authCallback.html?token=${token}`);
     }
 )
 router.get('/movies/popular',async(req,res)=>{
