@@ -1,0 +1,54 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #0f0f13;
+  color: #f0ede6;
+  font-family: "Segoe UI", sans-serif;
+  min-height: 100vh;
+}
+
+main {
+  padding: 40px;
+}
+
+#search-heading {
+  font-size: 24px;
+  font-weight: 600;
+  color: #f0ede6;
+  margin-bottom: 32px;
+}
+
+#search-heading span {
+  color: #c9a84c;
+}
+
+.results-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.badge-movie {
+  background: rgba(201, 168, 76, 0.15);
+  color: #c9a84c;
+}
+
+.badge-show {
+  background: rgba(99, 148, 220, 0.15);
+  color: #6394dc;
+}
