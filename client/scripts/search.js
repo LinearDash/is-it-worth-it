@@ -48,10 +48,24 @@ const openItemDialog = async (type, id) => {
         <h2 class="dialog-title">${itemName}</h2>
         <p class="dialog-rating">⭐ ${item.vote_average.toFixed(1)}</p>
         <p class="dialog-overview">${item.overview}</p>
+        <button id="add-to-library-btn" class="add-library-btn">+ Add to Library</button>
       </div>
     </div>
   `;
   document.getElementById("item-dialog").showModal();
+  document
+    .getElementById("add-to-library-btn")
+    .addEventListener("click", () => {
+      addToLibrary(
+        item.id,
+        itemName,
+        type,
+        item.poster_path,
+        item.vote_average,
+        item.release_date,
+        item.genres,
+      );
+    });
 };
 
 document.getElementById("close-dialog").addEventListener("click", () => {

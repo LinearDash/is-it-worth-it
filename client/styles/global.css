@@ -215,3 +215,20 @@ dialog::backdrop {
   color: #6b6880;
   line-height: 1.7;
 }
+
+.add-library-btn {
+  margin-top: 16px;
+  padding: 10px 20px;
+  background: #c9a84c;
+  color: #0f0f13;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.add-library-btn:hover {
+  opacity: 0.85;
+}
