@@ -65,6 +65,7 @@ const openItemDialog = async (type, id) => {
         item.release_date,
         item.genres,
       );
+      document.getElementById("item-dialog").close();
     });
 };
 

@@ -16,8 +16,6 @@ const addToLibrary = async (
     },
     body: JSON.stringify(item),
   });
-  const data = await response.json();
-  console.log(data);
 };
 
 const removeFromLibrary = async (itemId) => {
@@ -27,6 +25,4 @@ const removeFromLibrary = async (itemId) => {
       Authorization: `Bearer ${token}`,
     },
   });
-
-  console.log(response);
 };

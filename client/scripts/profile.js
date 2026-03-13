@@ -43,6 +43,7 @@ const loadLibrary = async () => {
     container.appendChild(card);
     card.querySelector(".remove-btn").addEventListener("click", () => {
       removeFromLibrary(item.id);
+      card.remove();
     });
   });
 };

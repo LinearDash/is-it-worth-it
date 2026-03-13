@@ -79,8 +79,6 @@ router.delete("/library/delete/:itemId", authMiddleware, async (req, res) => {
     const userId = req.user.id;
     const { itemId } = req.params;
 
-    console.log(itemId);
-
     const upadtedUser = removeFromLibrary(userId, itemId);
     res.json(upadtedUser);
   } catch (error) {
