@@ -232,3 +232,104 @@ dialog::backdrop {
 .add-library-btn:hover {
   opacity: 0.85;
 }
+
+.get-verdict-btn {
+  margin-top: 16px;
+  padding: 10px 20px;
+  background: rgba(201, 168, 76, 0.15);
+  color: #c9a84c;
+  border: 1px solid rgba(201, 168, 76, 0.3);
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  width: 100%;
+}
+
+.get-verdict-btn:hover {
+  background: rgba(201, 168, 76, 0.25);
+}
+
+.verdict-loading {
+  color: #6b6880;
+  font-size: 14px;
+  margin-top: 16px;
+}
+
+.verdict-card {
+  margin-top: 20px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.verdict-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.verdict-badge {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.verdict-worth {
+  background: rgba(76, 175, 125, 0.2);
+  color: #4caf7d;
+}
+.verdict-skip {
+  background: rgba(224, 92, 92, 0.2);
+  color: #e05c5c;
+}
+.verdict-depends {
+  background: rgba(201, 168, 76, 0.2);
+  color: #c9a84c;
+}
+
+.verdict-score {
+  font-size: 14px;
+  font-weight: 600;
+  color: #c9a84c;
+}
+
+.verdict-summary {
+  font-size: 14px;
+  color: #b0adc0;
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.verdict-lists {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.verdict-list-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: #f0ede6;
+  margin-bottom: 8px;
+}
+
+.verdict-list ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.verdict-list li {
+  font-size: 12px;
+  color: #6b6880;
+  line-height: 1.5;
+  padding-left: 8px;
+  border-left: 2px solid rgba(255, 255, 255, 0.1);
+}

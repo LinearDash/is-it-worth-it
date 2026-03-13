@@ -60,6 +60,8 @@ const openItemDialog = async (type, id) => {
         <p class="dialog-rating">⭐ ${item.vote_average.toFixed(1)}</p>
         <p class="dialog-overview">${item.overview}</p>
         <button id="add-to-library-btn" class="add-library-btn">+ Add to Library</button>
+        <button id="get-verdict-btn" class="get-verdict-btn">Get AI Verdict</button>
+        <div id="verdict-section" class="verdict-section"></div>
       </div>
     </div>
   `;
@@ -77,6 +79,48 @@ const openItemDialog = async (type, id) => {
         item.genres,
       );
       document.getElementById("item-dialog").close();
+    });
+  document
+    .getElementById("get-verdict-btn")
+    .addEventListener("click", async () => {
+      document.getElementById("verdict-section").innerHTML =
+        '<p class="verdict-loading">Getting AI verdict...</p>';
+
+      const verdictResponse = await fetch("/verdict", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ item }),
+      });
+      const verdict = await verdictResponse.json();
+      console.log("verdict:", verdict);
+
+      // display verdict here
+      document.getElementById("verdict-section").innerHTML = `
+        <div class="verdict-card">
+          <div class="verdict-header">
+            <span class="verdict-badge ${verdict.verdict === "Worth It" ? "verdict-worth" : verdict.verdict === "Skip It" ? "verdict-skip" : "verdict-depends"}">${verdict.verdict}</span>
+            <span class="verdict-score">${verdict.matchScore}% match</span>
+          </div>
+          <p class="verdict-summary">${verdict.summary}</p>
+          <div class="verdict-lists">
+            <div class="verdict-list">
+              <p class="verdict-list-title">Perfect For You If...</p>
+              <ul>
+                ${verdict.perfectFor.map((reason) => `<li>${reason}</li>`).join("")}
+              </ul>
+            </div>
+            <div class="verdict-list">
+              <p class="verdict-list-title">Skip It If...</p>
+              <ul>
+                ${verdict.skipIf.map((reason) => `<li>${reason}</li>`).join("")}
+              </ul>
+            </div>
+          </div>
+        </div>
+      `;
     });
 };
 
