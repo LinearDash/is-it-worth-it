@@ -15,6 +15,7 @@ const {
   removeFromLibrary,
   getLibrary,
 } = require("../storage/users");
+const { getVerdict } = require("../ai/gemini");
 
 const router = express.Router();
 
@@ -93,6 +94,18 @@ router.get("/library", authMiddleware, async (req, res) => {
     const library = getLibrary(userId);
 
     res.json(library);
+  } catch (error) {
+    res.status(500).json({ message: "Something went wrong" });
+  }
+});
+
+router.post("/verdict", authMiddleware, async (req, res) => {
+  try {
+    const { item } = req.body;
+    const library = getLibrary(req.user.id);
+
+    const verdict = await getVerdict(item, library);
+    res.json(verdict);
   } catch (error) {
     res.status(500).json({ message: "Something went wrong" });
   }
