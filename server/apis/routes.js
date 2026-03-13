@@ -10,7 +10,11 @@ const {
   searchMoviesAndShows,
 } = require("../apis/tmdb");
 const authMiddleware = require("../middleware/auth");
-const { addToLibrary, removeFromLibrary } = require("../storage/users");
+const {
+  addToLibrary,
+  removeFromLibrary,
+  getLibrary,
+} = require("../storage/users");
 
 const router = express.Router();
 
@@ -70,13 +74,27 @@ router.post("/library/add", authMiddleware, async (req, res) => {
   }
 });
 
-router.delete("/library/delete", authMiddleware, async (req, res) => {
+router.delete("/library/delete/:itemId", authMiddleware, async (req, res) => {
   try {
     const userId = req.user.id;
-    const item = req.body;
+    const { itemId } = req.params;
 
-    const upadtedUser = removeFromLibrary(userId, item);
+    console.log(itemId);
+
+    const upadtedUser = removeFromLibrary(userId, itemId);
     res.json(upadtedUser);
+  } catch (error) {
+    console.log("error:", error); // ← add this
+    res.status(500).json({ message: "Something went wrong" });
+  }
+});
+
+router.get("/library", authMiddleware, async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const library = getLibrary(userId);
+
+    res.json(library);
   } catch (error) {
     res.status(500).json({ message: "Something went wrong" });
   }

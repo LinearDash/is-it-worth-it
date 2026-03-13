@@ -19,3 +19,14 @@ const addToLibrary = async (
   const data = await response.json();
   console.log(data);
 };
+
+const removeFromLibrary = async (itemId) => {
+  const response = await fetch(`/library/delete/${itemId}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  console.log(response);
+};

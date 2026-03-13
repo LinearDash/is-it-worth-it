@@ -70,7 +70,7 @@ const addToLibrary = (userId, item) => {
   return users[userIndex];
 };
 
-const removeFromLibrary = (userId, item) => {
+const removeFromLibrary = (userId, itemId) => {
   let users = getUsers();
 
   const userIndex = users.findIndex((user) => user.id == userId);
@@ -78,15 +78,28 @@ const removeFromLibrary = (userId, item) => {
   if (userIndex === -1) {
     return { message: `User not found` };
   }
-  if (!item) {
+  if (!itemId) {
     return { message: `Item not provided` };
   }
 
   users[userIndex].library = users[userIndex].library.filter(
-    (libraryItem) => libraryItem.id !== item.id,
+    (libraryItem) => libraryItem.id != itemId,
   );
   saveUsers(users);
   return users[userIndex];
+};
+
+const getLibrary = (userId) => {
+  const users = getUsers();
+
+  const userIndex = users.findIndex((user) => user.id == userId);
+
+  if (userIndex === -1) {
+    return { message: `User not found` };
+  }
+  const library = users[userIndex].library;
+
+  return library;
 };
 
 module.exports = {
@@ -94,4 +107,5 @@ module.exports = {
   createUser,
   addToLibrary,
   removeFromLibrary,
+  getLibrary,
 };

@@ -1,0 +1,151 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #0f0f13;
+  color: #f0ede6;
+  font-family: "Segoe UI", sans-serif;
+  min-height: 100vh;
+}
+
+main {
+  padding: 0;
+}
+
+#library {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.row-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #f0ede6;
+  margin-bottom: 24px;
+}
+
+.library-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.profile-section {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 40px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.profile-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #c9a84c;
+}
+
+.profile-details {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.profile-name {
+  font-size: 24px;
+  font-weight: 700;
+  color: #f0ede6;
+}
+
+.profile-email {
+  font-size: 14px;
+  color: #6b6880;
+}
+
+.lCard {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #1a1a24;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 12px;
+  transition: border-color 0.2s;
+}
+
+.lCard:hover {
+  border-color: #c9a84c;
+}
+
+.lcard-poster {
+  width: 48px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.lcard-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.lcard-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: #f0ede6;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.lcard-rating {
+  font-size: 12px;
+  color: #c9a84c;
+}
+.badge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  align-self: flex-start;
+}
+
+.badge-movie {
+  background: rgba(201, 168, 76, 0.15);
+  color: #c9a84c;
+}
+
+.badge-show {
+  background: rgba(99, 148, 220, 0.15);
+  color: #6394dc;
+}
+.remove-btn {
+  margin-left: auto;
+  padding: 8px 14px;
+  background: rgba(224, 92, 92, 0.15);
+  color: #e05c5c;
+  border: 1px solid rgba(224, 92, 92, 0.3);
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.2s;
+}
+
+.remove-btn:hover {
+  background: rgba(224, 92, 92, 0.3);
+}
